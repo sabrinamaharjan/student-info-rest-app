@@ -3,10 +3,7 @@ package com.vsn.studentinfo.controller;
 import com.vsn.studentinfo.model.Student;
 import com.vsn.studentinfo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,15 @@ public class StudentController {
     Student findById(@PathVariable  Long id){
         final Student student = studentService.findById(id);
         return student;
+    }
+
+    @DeleteMapping("/{id}")
+    void deleteById(@PathVariable  Long id) {
+        studentService.deleteById(id);
+    }
+    @PostMapping
+    Student save(@RequestBody  Student student){
+        final Student student1 = studentService.save(student);
+        return student1;
     }
 }
