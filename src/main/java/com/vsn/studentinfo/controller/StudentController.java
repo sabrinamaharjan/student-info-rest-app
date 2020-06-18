@@ -4,6 +4,7 @@ import com.vsn.studentinfo.model.Student;
 import com.vsn.studentinfo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +23,9 @@ public class StudentController {
         return students;
     }
 
+    @GetMapping("/{id}")
+    Student findById(@PathVariable  Long id){
+        final Student student = studentService.findById(id);
+        return student;
+    }
 }
